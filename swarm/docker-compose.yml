@@ -5,7 +5,7 @@ services:
     image: apache/nifi:latest
     networks:
       - public 
-    hostname: nifi1
+        #hostname: nifi1
     ports:
       - "8087:8080"
     user: root
@@ -36,15 +36,15 @@ services:
     image: apache/nifi:latest
     networks:
       - public 
-    hostname: nifi2
+        #hostname: nifi2
     ports:
-      - "8085:8085"
+      - "8085:8080"
     user: root
     environment:
       - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=7000,server=y,suspend=n
     volumes:
-      - /home/spolex/workspace/services/nifi.cluster.docker.swarm/nifi2/nifi.properties:/opt/nifi/conf/nifi.properties:ro
-      - /home/spolex/workspace/services/nifi.cluster.docker.swarm/nifi2/bootstrap.conf:/opt/nifi/conf/bootstrap.conf:ro
+      - /home/docker/nifi.cluster.docker.swarm/nifi2/nifi.properties:/opt/nifi/conf/nifi.properties:ro
+      - /home/docker/nifi.cluster.docker.swarm/nifi2/bootstrap.conf:/opt/nifi/conf/bootstrap.conf:ro
       - /home/docker/srv/nifi/flow:/opt/nifi/flow:Z
       - /home/docker/srv/nifi/content_repository:/opt/nifi/content_repository:Z
       - /home/docker/srv/nifi/database_repository:/opt/nifi/database_repository:Z
